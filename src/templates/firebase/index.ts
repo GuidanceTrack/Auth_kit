@@ -392,22 +392,10 @@ const firestoreRulesTemplate = `rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     // User sessions collection
+    // Document ID must match the authenticated user's UID
     match /user_sessions/{userId} {
-      // Users can only read their own session
-      allow read: if request.auth != null && request.auth.uid == userId;
-
-      // Users can create their own session
-      allow create: if request.auth != null
-        && request.auth.uid == userId
-        && request.resource.data.user_id == userId;
-
-      // Users can update their own session
-      allow update: if request.auth != null
-        && request.auth.uid == userId
-        && resource.data.user_id == userId;
-
-      // No one can delete sessions
-      allow delete: if false;
+      allow read, write: if request.auth != null
+        && request.auth.uid == userId;
     }
   }
 }

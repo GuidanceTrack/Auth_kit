@@ -436,8 +436,8 @@ auth-kit-generator/
 
 ### Phase 5: Polish & Testing
 - [x] Add responsive design for mobile
-- [~] Test with real Supabase project (IN PROGRESS - see notes below)
-- [ ] Test with real Firebase project
+- [x] Test with real Supabase project ✅ COMPLETED
+- [x] Test with real Firebase project ✅ COMPLETED
 - [x] Add loading states
 - [x] Add success feedback after download
 
@@ -469,35 +469,41 @@ A test application was created at `test-app/` folder with:
 3. Run `npm run dev` in test-app folder
 4. Test Google Sign-in flow
 
-### Current Status:
-- OAuth login redirects successfully (access_token appears in URL)
-- Page appears blank after redirect - needs debugging
-- Possible issue: session tracking or state update after OAuth callback
+### Current Status: ✅ COMPLETED
+- Google OAuth login working
+- User data displayed (email, name, avatar)
+- Session tracking working (first login, last login, login count)
+- Sign out working
+- Login count increments on re-login
 
 ### Supabase Credentials (for reference):
 - Project URL: https://udbcgdlgeeuzocclqzpy.supabase.co
 - Anon Key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkYmNnZGxnZWV1em9jY2xxenB5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU3OTU1NjIsImV4cCI6MjA4MTM3MTU2Mn0.V8eTkOkMbt2zrdO2PGIV0IGB2waGc__m9vT4rAQ6od4
 
-### Next Steps:
-1. Debug blank page issue after OAuth redirect
-2. Verify session tracking writes to user_sessions table
-3. Test sign out functionality
-4. Test Firebase integration
-
 ---
 
 ## Phase 5 Testing Progress (Firebase)
 
-### Status: NOT STARTED
+### Status: ✅ COMPLETED
 
-### Steps Required:
-1. Create Firebase project
-2. Enable Google Sign-in in Firebase Authentication
-3. Create Firestore database
-4. Apply firestore-rules.txt
-5. Get Firebase credentials (API key, auth domain, project ID)
-6. Download Firebase ZIP from Auth Kit Generator
-7. Extract to test-app and test
+### What Was Done:
+1. **Firebase Project Created**: `auth-kit-test-firebase` via Firebase CLI
+2. **Web App Created**: Got SDK config (API key, auth domain, project ID)
+3. **Google Sign-in Enabled**: Via Firebase Console
+4. **Firestore Database Created**: Standard edition, us-central1
+5. **Firestore Rules Deployed**: Via Firebase CLI
+6. **Test App Created**: `test-app-firebase/` folder
+
+### Firebase Credentials (for reference):
+- Project ID: auth-kit-test-firebase
+- API Key: AIzaSyBMG2uRLu0v_GgNXclyFFWkvh5otDy4PuE
+- Auth Domain: auth-kit-test-firebase.firebaseapp.com
+
+### Test Results:
+- Google OAuth login working
+- User data displayed (email, name, avatar)
+- Session tracking working in Firestore (first login, last login, login count)
+- Sign out working
 
 ---
 
